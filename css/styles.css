@@ -1,0 +1,21 @@
+.container{
+  border:1px solid red;
+}
+.card{
+  border:1px solid blue;
+  box-sizing: border-box;
+  transition: .3s ease-in-out;
+}
+.card:hover{
+  box-shadow: 5px 15px 15px 10px rgba(0,0,0,0.1);
+}
+.card img{
+  width: auto;
+  height:12rem;
+  object-fit: contain;
+  margin:0.5rem;
+  border:1px solid red;
+}
+.productos{
+  border:1px solid green;
+}
