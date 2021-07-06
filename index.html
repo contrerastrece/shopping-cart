@@ -14,12 +14,36 @@
     />
 
     <link rel="stylesheet" href="css/styles.css" />
+    <!-- <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script> -->
     <title>Shopping Cart</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+      <div class="container-fluid d-flex justify-content-between">
+        <a class="navbar-brand col-md-2" href="#">Navbar</a>
+
+        <div class="col-md-6">
+          <form class="">
+            <div class="input-group">
+              <input
+                class="form-control"
+                type="search"
+                placeholder="Search Products"
+                aria-label="Search Products"
+              />
+
+              <button
+                class="btn btn-outline-secondary"
+                type="submit"
+                id="btn_search"
+                aria-label=""
+              >
+                <box-icon name="search"></box-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -31,68 +55,59 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <div
+          class="collapse navbar-collapse col-md-2"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#"><box-icon name="user"></box-icon></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
+              <a class="nav-link" href="#">
+                <button class="btn position-relative">
+                  <box-icon
+                    name="cart-alt"
+                    class="bx bxs-like bx-tada-hover"
+                  ></box-icon>
+                  <span
+                    class="
+                      position-absolute
+                      top-0
+                      start-100
+                      translate-middle
+                      badge
+                      rounded-pill
+                      bg-danger
+                    "
+                    id="countItem"
+                  >
+                  </span>
+                </button>
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link disabled"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-                >Disabled</a
-              >
             </li>
           </ul>
-          <form class="d-flex">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
         </div>
       </div>
     </nav>
 
     <section class="container">
-      <div class="productos row justify-content-between g-4" id="productos">
+      <div class="productos row justify-content-around gap-3" id="productos">
         <template id="template">
-          <div class="card col-md-4" style="width:15rem">
+          <div class="card col-md-4" style="width: 15rem" data-id="">
             <img src="" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title"></h5>
               <p class="card-text"></p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <p class="card-description"></p>
+              <button
+                type="button"
+                class="btn btn-info w-100 rounded-5"
+                data-id=""
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         </template>
@@ -106,6 +121,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="js/app.js"></script>
+    <script src="node_modules/boxicons/dist/boxicons.js"></script>
+    <script type="module" src="js/app.js"></script>
   </body>
 </html>

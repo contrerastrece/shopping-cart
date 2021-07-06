@@ -1,27 +1,34 @@
-const $product=document.getElementById("productos");
+import { fetchProducts } from "./fetch.js";
+import { addToCar } from "./addToCar.js";
 
-const fragment = document.createDocumentFragment();
-const $template=document.getElementById("template").content;
+const $container = document.querySelector(".container");
+let $countItem = document.getElementById("countItem");
+let countItem = 0;
 
-async function fetchProducts() {
-  const response = await fetch('https://fakestoreapi.com/products');
-  const data=await response.json();
+document.addEventListener("DOMContentLoaded", (e) => {
+  countItem == 0
+    ? ($countItem.style.display = "none")
+    : ($countItem.style.display = "flex");
+  fetchProducts();
+});
 
-  console.log(data)
-  data.forEach((e)=>{
+$container.addEventListener("click", (e) => {
+  e.preventDefault();
+  let element = e.target;
+  if (element.classList.contains("btn")) {
+    let dataId = element.dataset.id;
 
-   $template.querySelector("img").setAttribute("src",`${e.image}`);
-   $template.querySelector("img").setAttribute("alt",`${e.title}`);
+    addToCar(dataId);
 
-   $template.querySelector("h5").textContent=`$ ${e.price}`;
+    countItem++;
+    
+    countItem == 0
+      ? ($countItem.style.display = "none")
+      : ($countItem.style.display = "flex");
+    countItem > 9
+      ? ($countItem.textContent = "+9")
+      : ($countItem.textContent = `${countItem}`);
 
-   let clone=document.importNode($template,true);
-
-   fragment.appendChild(clone);
-  })
-
-  $product.appendChild(fragment);
-}
-fetchProducts();
-
-
+    console.log(countItem);
+  }
+});
